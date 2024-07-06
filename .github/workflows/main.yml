@@ -5,6 +5,9 @@ on:
     branches:
        - master
   workflow_dispatch:
+    inputs:
+      parameter:
+        description: My Parameter
 
 jobs:
    hello:
