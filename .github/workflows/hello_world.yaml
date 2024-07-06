@@ -1,6 +1,9 @@
 name: my_first_github_action
 
 on:
+  push:
+    branches:
+       - master
   workflow_dispatch:
 
 jobs:
