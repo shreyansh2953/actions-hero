@@ -3,17 +3,18 @@ name: my_first_github_action
 on:
   workflow_dispatch:
     inputs:
-      parameter:
+      helm_chart:
         description: helm_chart
       version:
          description: my_version
-
+      chart_name:
+         description: chart_name
 jobs:
    hello:
       runs-on: ubuntu-latest
       steps:
          - name: hello world
-           run: echo "${{ inputs.parameter }}"
+           run: echo "${{ inputs.helm_chart }}"
          - name: install plugin
            uses: WyriHaximus/github-action-helm3@v3
            with:
@@ -21,13 +22,13 @@ jobs:
          - name: add repo
            uses: WyriHaximus/github-action-helm3@v3
            with:
-             exec: helm repo add my-repo "${{ inputs.parameter }}"
+             exec: helm repo add my-repo "${{ inputs.helm_chart }}"
          - name: pull repo
            uses: WyriHaximus/github-action-helm3@v3
            with:
-             exec: helm pull my-repo/reloader
+             exec: helm pull my-repo/"${{ inputs.chart_name }}" --version "${{ inputs.version }}"
          - name: List Images
            uses: WyriHaximus/github-action-helm3@v3
            with:
-             exec: helm images get reloader-1.0.116.tgz
+             exec: helm images get "reloader-${{ inputs.version }}.tgz"
              
