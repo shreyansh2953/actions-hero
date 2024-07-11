@@ -5,6 +5,8 @@ on:
     inputs:
       parameter:
         description: helm_chart
+      version:
+         description: my_version
 
 jobs:
    hello:
