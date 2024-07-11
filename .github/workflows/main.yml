@@ -24,4 +24,8 @@ jobs:
            uses: WyriHaximus/github-action-helm3@v3
            with:
              exec: helm pull my-repo/reloader
+         - name: List Images
+           uses: WyriHaximus/github-action-helm3@v3
+           with:
+             exec: helm images get reloader-1.0.116.tgz
              
