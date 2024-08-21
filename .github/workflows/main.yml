@@ -13,22 +13,26 @@ jobs:
    hello:
       runs-on: ubuntu-latest
       steps:
-         - name: hello world
-           run: echo "${{ GITHUB_WORKFLOW }}"
-         - name: install plugin
-           uses: WyriHaximus/github-action-helm3@v3
-           with:
-             exec: helm plugin install https://github.com/nikhilsbhat/helm-images
-         - name: add repo
-           uses: WyriHaximus/github-action-helm3@v3
-           with:
-             exec: helm repo add my-repo "${{ inputs.helm_chart }}"
-         - name: pull repo
-           uses: WyriHaximus/github-action-helm3@v3
-           with:
-             exec: helm pull my-repo/"${{ inputs.chart_name }}" --version "${{ inputs.version }}"
-         - name: List Images
-           uses: WyriHaximus/github-action-helm3@v3
-           with:
-             exec: helm images get "reloader-${{ inputs.version }}.tgz"
+         - name: Pull images from public & Push images to OCR
+           shell: bash
+           run: |
+             echo ${{ vars.registry }}/test:123
+         # - name: hello world
+         #   run: echo "${{ GITHUB_WORKFLOW }}"
+         # - name: install plugin
+         #   uses: WyriHaximus/github-action-helm3@v3
+         #   with:
+         #     exec: helm plugin install https://github.com/nikhilsbhat/helm-images
+         # - name: add repo
+         #   uses: WyriHaximus/github-action-helm3@v3
+         #   with:
+         #     exec: helm repo add my-repo "${{ inputs.helm_chart }}"
+         # - name: pull repo
+         #   uses: WyriHaximus/github-action-helm3@v3
+         #   with:
+         #     exec: helm pull my-repo/"${{ inputs.chart_name }}" --version "${{ inputs.version }}"
+         # - name: List Images
+         #   uses: WyriHaximus/github-action-helm3@v3
+         #   with:
+         #     exec: helm images get "reloader-${{ inputs.version }}.tgz"
              
