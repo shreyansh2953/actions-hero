@@ -17,8 +17,9 @@ jobs:
            shell: bash
            run: |
              NAME="Zara"
+             test=$(echo ${{ secrets.HII }} | xargs)
              echo ${{ vars.registry }}/$NAME:123
-             echo ${{ secrets.REPO }}/${{ vars.registry }}/$(${{ secrets.HII }} | xargs)/$NAME:324
+             echo ${{ secrets.REPO }}/${{ vars.registry }}/$test/$NAME:324
          # - name: hello world
          #   run: echo "${{ GITHUB_WORKFLOW }}"
          # - name: install plugin
