@@ -16,8 +16,9 @@ jobs:
          - name: Pull images from public & Push images to OCR
            shell: bash
            run: |
-             echo ${{ vars.registry }}/test:123
-             echo ${{ secrets.REPO }}/best:324
+             NAME="Zara"
+             echo ${{ vars.registry }}/$NAME:123
+             echo ${{ secrets.REPO }}/$NAME:324
          # - name: hello world
          #   run: echo "${{ GITHUB_WORKFLOW }}"
          # - name: install plugin
