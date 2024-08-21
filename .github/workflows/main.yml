@@ -18,7 +18,7 @@ jobs:
            run: |
              NAME="Zara"
              echo ${{ vars.registry }}/$NAME:123
-             echo ${{ secrets.REPO }}/$NAME:324
+             echo ${{ secrets.REPO }}/${{ vars.registry }}/$NAME:324
          # - name: hello world
          #   run: echo "${{ GITHUB_WORKFLOW }}"
          # - name: install plugin
