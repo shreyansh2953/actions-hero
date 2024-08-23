@@ -37,6 +37,25 @@ jobs:
              # test=$(echo ${{ secrets.HII }} | xargs)
              # echo ${{ vars.registry }}/$NAME:123
              # echo ${{ secrets.REPO }}/${{ vars.registry }}/$test/$NAME:324
+   manual-approval:
+    environment: 'Prod'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Approved to Prod"
+
+   prod:
+     runs-on: ubuntu-latest
+     name: 'Deploy to Prod'
+     needs: 
+      - manual-approval
+     # with:
+     #   stage: prod
+     steps:
+       - name: aprroved stage
+         shell: bash
+         run: |
+           echo "approved stage"
+    
          # - name: hello world
          #   run: echo "${{ GITHUB_WORKFLOW }}"
          # - name: install plugin
