@@ -30,6 +30,9 @@ jobs:
            shell: bash
            run: |
                 echo "i am true"
+                helm version
+                kubectl version --client
+                docker version
              # NAME="Zara"
              # test=$(echo ${{ secrets.HII }} | xargs)
              # echo ${{ vars.registry }}/$NAME:123
