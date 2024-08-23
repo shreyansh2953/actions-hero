@@ -10,7 +10,7 @@ on:
       chart_name:
          description: chart_name
       helm_override:
-        description: 'Test scenario tags'
+        description: helm_override
         required: true
         type: boolean
 jobs:
@@ -20,11 +20,11 @@ jobs:
          - name: Pull images from public & Push images to OCR
            shell: bash
            run: |
-             echo ${{ inputs.helm_override }}
-             NAME="Zara"
-             test=$(echo ${{ secrets.HII }} | xargs)
-             echo ${{ vars.registry }}/$NAME:123
-             echo ${{ secrets.REPO }}/${{ vars.registry }}/$test/$NAME:324
+                echo "${{ inputs.helm_override }}"
+             # NAME="Zara"
+             # test=$(echo ${{ secrets.HII }} | xargs)
+             # echo ${{ vars.registry }}/$NAME:123
+             # echo ${{ secrets.REPO }}/${{ vars.registry }}/$test/$NAME:324
          # - name: hello world
          #   run: echo "${{ GITHUB_WORKFLOW }}"
          # - name: install plugin
