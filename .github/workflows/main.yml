@@ -9,6 +9,10 @@ on:
          description: my_version
       chart_name:
          description: chart_name
+      helm_override:
+        description: 'Test scenario tags'
+        required: true
+        type: boolean
 jobs:
    hello:
       runs-on: ubuntu-latest
@@ -16,6 +20,7 @@ jobs:
          - name: Pull images from public & Push images to OCR
            shell: bash
            run: |
+             echo ${{ inputs.helm_override }}
              NAME="Zara"
              test=$(echo ${{ secrets.HII }} | xargs)
              echo ${{ vars.registry }}/$NAME:123
